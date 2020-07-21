@@ -1,24 +1,52 @@
+import goods.Book;
+import goods.BookService;
+import java.util.ArrayList;
+import java.util.List;
+import users.User;
+import users.UserService;
+
 public class App {
 
-    public static BookDaoImpl bookDao = new BookDaoImpl();
+    public static UserService userService = new UserService();
+    public static BookService bookService = new BookService();
 
     public static void main(String[] args) {
+createAndSaveBooks();
 
-        Book book1 = new Book();
-        book1.setId(1L);
-        book1.setTitle("TITLE_1");
-        book1.setPrice(1111);
-        Book book2 = new Book();
-        book2.setTitle("TITLE_2");
+        System.out.println(bookService.averagePrice(20, 1000));
+    }
 
-        bookDao.save(book1);
-        System.out.println(bookDao.findById(1L));
-        book1.setTitle("CHANGE_TITLE");
-        bookDao.update(book1);
-
-        bookDao.delete(book1);
-
-        bookDao.findAll();
+    private static void createAndSaveUsers(){
+        User user = new User();
+        user.setId(1L);
+        user.setFirst_name("USER_1");
+        userService.saveBook(user);
 
     }
+    private static void createAndSaveBooks(){
+        Book book = new Book();
+        book.setId(1L);
+        book.setTitle("TITLE_1");
+        book.setPrice(4);
+
+        Book book1 = new Book();
+        book.setId(2L);
+        book.setTitle("TITLE_1");
+        book.setPrice(500);
+
+        Book book2 = new Book();
+        book.setId(3L);
+        book.setTitle("TITLE_1");
+        book.setPrice(222);
+
+        List<Book> books = new ArrayList<>();
+        books.add(book);
+        books.add(book1);
+        books.add(book2);
+        bookService.saveBooks(books);
+    }
+
+
+    
+
 }

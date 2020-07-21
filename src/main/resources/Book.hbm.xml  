@@ -3,7 +3,7 @@
     "-//Hibernate/Hibernate Mapping DTD//EN"
     "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-    <class name="Book" table="BOOKS">
+    <class name="goods.Book" table="BOOKS">
         <meta attribute="class-description">
             the class wich describe books
         </meta>

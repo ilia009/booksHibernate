@@ -1,3 +1,4 @@
+package goods;
 
 import javax.persistence.*;
 import lombok.AllArgsConstructor;

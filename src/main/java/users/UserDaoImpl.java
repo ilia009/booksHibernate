@@ -1,37 +1,46 @@
+package users;
+
 import java.util.List;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
+import utils.HibernateUtil;
 
-public class BookDaoImpl implements BookDao {
-    public Book findById(long id) {
-        return HibernateUtil.getSessionFactory().openSession().get(Book.class, id);
+public class UserDaoImpl implements UserDao {
+
+    @Override
+    public User findById(long id) {
+        return HibernateUtil.getSessionFactory().openSession().get(User.class, id);
     }
 
-    public void save(Book book) {
+    @Override
+    public void save(User user) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
-        session.save(book);
+        session.save(user);
         transaction.commit();
         session.close();
     }
 
-    public void update(Book book) {
+    @Override
+    public void update(User user) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
-        session.update(book);
+        session.update(user);
         transaction.commit();
         session.close();
     }
 
-    public void delete(Book book) {
+    @Override
+    public void delete(User user) {
         Session session = HibernateUtil.getSessionFactory().openSession();
         Transaction transaction = session.beginTransaction();
-        session.delete(book);
+        session.delete(user);
         transaction.commit();
         session.close();
     }
 
-    public List<Book> findAll() {
+    @Override
+    public List<User> findAll() {
         return HibernateUtil.getSessionFactory().openSession().createQuery("From Book").list();
     }
 }
